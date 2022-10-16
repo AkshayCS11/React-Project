@@ -35,7 +35,7 @@ export default makeStyles((theme) => ({
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
+    width: '280px',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
@@ -59,4 +59,10 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  header:{
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    fontSize: '2em',
+    fontWeight: 800,
+  }
 }));
