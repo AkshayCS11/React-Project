@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
-API.interceptors.request.use((req) => {
+API.interceptors.request.use((req) => {   //sending token to middlewares
   if (localStorage.getItem('profile')) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
   }
@@ -22,3 +22,4 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+export const activate = (formData) => API.post('/user/activate', formData);

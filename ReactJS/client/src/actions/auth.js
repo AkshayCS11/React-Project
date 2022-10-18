@@ -15,7 +15,19 @@ export const signin = (formData, router) => async (dispatch) => {
 
 export const signup = (formData, router) => async (dispatch) => {
   try {
-    const { data } = await api.signUp(formData);
+    const { data } = await api.signUp(formData); // formData sends to the server
+
+    // dispatch({ type: AUTH, data }); // data pass to the reducers
+
+    router.push('/activate');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const activate = (formData, router) => async (dispatch) => {
+  try {
+    const { data } = await api.activate(formData);
 
     dispatch({ type: AUTH, data });
 
