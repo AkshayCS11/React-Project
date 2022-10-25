@@ -39,11 +39,16 @@ const Navbar = () => {
       <Link to="/" className={classes.brandContainer}>
         <img component={Link} to="/" src={UpsmartLogo} alt="icon" height="45px" />
       </Link>
-      <Button style={{marginLeft: '38rem', display: "row"}} component={Link} to="/employeeform" variant="contained" color="primary">Add Employee</Button>
-      <Button style={{marginRight: '3rem', display: "row"}} component={Link} to="/customerform" variant="contained" color="primary">Add Customer</Button>
+      <Toolbar>
+      {user?(
+        <div>
+        <Button style={{marginLeft: '30rem', display: "row"}} component={Link} to="/employeeform" variant="contained" color="primary">Add Employee</Button>
+        <Button style={{marginLeft: '10px', display: "row"}} component={Link} to="/customerform" variant="contained" color="primary">Add Customer</Button>
+        </div>):('')}
+      </Toolbar>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
-          <div className={classes.profile}>
+         <div className={classes.profile}>
             <Link className={classes.brandContainer}>
             <Avatar component={Link} to="/editprofile"  className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
             </Link>
