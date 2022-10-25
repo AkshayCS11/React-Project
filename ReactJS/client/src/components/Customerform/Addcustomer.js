@@ -1,37 +1,52 @@
-import React from 'react';
+import React,{ useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { ADDCUSTOMER } from '../../constants/actionTypes';
+import { addcustomer } from '../../actions/addcustomer';
 import "./Addcustomer.css";
 
-function close() {
-  document.getElementById('container').hidden = true;
-}
+const initialState = { firstName: '', lastName: '', company:'', email: '', phonenumber: '', website: ''};
 
-function Customerform() {
+
+const Customerform = () => {
+
+  const [form, setForm] = useState(initialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addcustomer(form));
+  };
+  
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
   return (
    <div id="container">
-     <form>
+     <form onsubmit={handleSubmit}>
         <h2 className="heading">Add Customer</h2>
         <hr />
         <label>Customer Type</label>
-        <input name="customertype" className="business" type="radio" value="Male" required /> Business
-        <input name="customertype" className="individual" type="radio" value="Female" /> Individual
+        <input name="customertype" onchange={handleChange} className="business" type="radio" value="Male" required /> Business
+        <input name="customertype" onchange={handleChange} className="individual" type="radio" value="Female" /> Individual
         <br />
         <label>First Name</label>
-        <input className="customerfirstname" type="text" placeholder="First Name" required/>
+        <input name="firstname" className="customerfirstname" onchange={handleChange} type="text" placeholder="First Name" required/>
         <br/>
         <label>Last Name</label>
-        <input className="customerlastname" type="text" placeholder="Last Name" required/>
+        <input name="lastname" className="customerlastname" onchange={handleChange} type="text" placeholder="Last Name" required/>
         <br />
         <label>Company Name</label>
-        <input className="companyname" type="text" placeholder="Enter Company Name" required/>
+        <input name="company" className="companyname" onchange={handleChange} type="text" placeholder="Enter Company Name" required/>
         <br />
         <label>Customer Email</label>
-        <input className="customeremail" type="email" placeholder="Enter email" required/>
+        <input name="email" className="customeremail" onchange={handleChange} type="email" placeholder="Enter email" required/>
         <br />
         <label>Customer Phone Number</label>
-        <input id="phone" type="number" placeholder="Enter phone number" required />
+        <input name="phonenumber" id="phone" type="number" onchange={handleChange} placeholder="Enter phone number" required />
         <br />
         <label>Website</label>
-        <input className="website" type="text" placeholder="Website"/>
+        <input name="website" className="website" onchange={handleChange} type="text" placeholder="Website"/>
         <br />
         <input className="reset" type="reset" value="Reset"/>
         <input className="submit" type="submit" value="Submit"/>
