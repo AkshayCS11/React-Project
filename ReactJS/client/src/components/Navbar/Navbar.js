@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
+import { Box, AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-
 import UpsmartLogo from '../../images/UpsmartLogo.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
@@ -40,11 +39,14 @@ const Navbar = () => {
       <Link to="/" className={classes.brandContainer}>
         <img component={Link} to="/" src={UpsmartLogo} alt="icon" height="45px" />
       </Link>
-      <Typography className={classes.header} variant="h4">Innovate Your Ideas</Typography>
+      <Button style={{marginLeft: '38rem', display: "row"}} component={Link} to="/employeeform" variant="contained" color="primary">Add Employee</Button>
+      <Button style={{marginRight: '3rem', display: "row"}} component={Link} to="/customerform" variant="contained" color="primary">Add Customer</Button>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+            <Link className={classes.brandContainer}>
+            <Avatar component={Link} to="/editprofile"  className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+            </Link>
             <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
           </div>
