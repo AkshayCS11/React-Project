@@ -2,6 +2,8 @@ import * as api from '../api/index.js';
 import { ADDCUSTOMER } from '../constants/actionTypes';
 
 export const addcustomer = (formData, router) => async (dispatch) => {
+
+    console.log('formdata',formData)
     try {
       const { data } = await api.addCustomer(formData);
   

@@ -6,7 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import CreatorOrTag from './components/CreatorOrTag/CreatorOrTag';
-import Employeeform from './components/Employeeform/AddEmployee';
+import Formandexcel from './components/Employeeform/Formandexcel';
 import Customerform from './components/Customerform/Addcustomer';
 import Editprofile from './components/Editprofile/Editprofile';
 
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/posts/:id" exact component={PostDetails} />
           <Route path={['/creators/:name', '/tags/:name']} component={CreatorOrTag} />
           <Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
-          <Route path="/employeeform" exact component={Employeeform}/>
+          <Route path="/employeeform" exact component={Formandexcel}/>
           <Route path="/customerform" exact component={Customerform}/>
           <Route path="/editprofile" exact component={Editprofile}/>
         </Switch>
