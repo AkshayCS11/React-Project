@@ -20,7 +20,7 @@ const Customerform = () => {
 
   const notify = () => toast.info("Form submission successfull",{
     position: "top-right",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

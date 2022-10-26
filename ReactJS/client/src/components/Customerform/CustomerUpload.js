@@ -11,7 +11,7 @@ function Customerupload() {
 
   return (
     <div>
-      <h1>Upload Customer Data</h1>
+      <h1 align='center'>UPLOAD CUSTOMER DATA</h1>
       <UploadFile onUploadExcelFile={uploadedExcelDataHandler} />
       <DisplayData excelData={uploadedExcelData} />
     </div>

@@ -10,10 +10,10 @@ export const addcustomer = (formData, router) => async (dispatch) => {
   
       dispatch({ type: ADDCUSTOMER, data });
 
-      setTimeout(router.push('/customerform'), 5000)
+      await setTimeout(router.push('/customerform'), 1000)
+
+      // await setTimeout(window.location.reload(), 1000)
       
-      // window.location.reload();
-    
     } catch (error) {
       console.log(error);
     }

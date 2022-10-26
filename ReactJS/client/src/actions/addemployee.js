@@ -7,9 +7,9 @@ export const addemployee = (formData, router) => async (dispatch) => {
   
       dispatch({ type: ADDEMPLOYEE, data });
   
-      router.push('/posts');
+      await setTimeout(router.push('/employeeform'), 1000)
 
-      window.location.reload();
+      // window.location.reload();
 
     
     } catch (error) {

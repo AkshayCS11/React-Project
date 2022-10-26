@@ -5,6 +5,8 @@ import { addemployee } from '../../actions/addemployee';
 import { ADDEMPLOYEE } from '../../constants/actionTypes';
 import { Button, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./AddEmployee.css";
 
 
@@ -16,16 +18,28 @@ const [form, setForm] = useState(initialState);
 const dispatch = useDispatch();
 const history = useHistory();
 
+const notify = () => toast.info("Form submission successfull",{
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "colored",
+  });
+
 const handleSubmit = (e) => {
   e.preventDefault();
   dispatch(addemployee(form,history));
-  console.log('form',form);
+  notify();
 };
 
 const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
     <div id="container">
+     <ToastContainer />
      <form onSubmit={handleSubmit}>
        <Box component="span"
              m={1}

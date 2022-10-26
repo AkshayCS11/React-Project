@@ -10,7 +10,7 @@ const uploadedExcelDataHandler = (data) => {
  
 return (
     <div>
-      <h1>Upload Employee Data</h1>
+      <h1 align='center'>UPLOAD EMPLOYEE DATA</h1>
       <UploadFile onUploadExcelFile={uploadedExcelDataHandler} />
       <DisplayData excelData={uploadedExcelData}/>
     </div>
