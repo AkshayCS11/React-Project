@@ -29,6 +29,10 @@ const SignUp = () => {
     setShowPassword(false);
   };
 
+  const forgotPassword = () => {
+    history.push('/forgotpassword')
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -94,6 +98,12 @@ const SignUp = () => {
               <Button onClick={switchMode}>
                 { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
               </Button>
+              { !isSignup &&(
+              <>
+                <Button onClick={forgotPassword}>
+                  Forgot Password
+                </Button>
+             </>)}
             </Grid>
           </Grid>
         </form>

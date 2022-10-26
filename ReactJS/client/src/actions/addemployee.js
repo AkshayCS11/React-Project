@@ -7,7 +7,10 @@ export const addemployee = (formData, router) => async (dispatch) => {
   
       dispatch({ type: ADDEMPLOYEE, data });
   
-      router.push('/auth');
+      router.push('/posts');
+
+      window.location.reload();
+
     
     } catch (error) {
       console.log(error);

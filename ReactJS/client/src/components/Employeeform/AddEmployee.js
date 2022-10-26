@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addemployee } from '../../actions/addemployee';
 import { ADDEMPLOYEE } from '../../constants/actionTypes';
+import { Button, Box } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import "./AddEmployee.css";
 
 
@@ -16,7 +18,7 @@ const history = useHistory();
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  dispatch(addemployee(form));
+  dispatch(addemployee(form,history));
   console.log('form',form);
 };
 
@@ -25,7 +27,14 @@ const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value }
   return (
     <div id="container">
      <form onSubmit={handleSubmit}>
-        <h2 className="heading">Add Employee</h2>
+       <Box component="span"
+             m={1}
+             display="flex"
+             justifyContent="space-between"
+             alignItems="center">
+        <h2 className="heading">Add Employee</h2>        
+        <Button component={Link} to="/employeeupload" variant="contained" color="primary">Upload bulk data</Button>
+        </Box>
         <hr />
         <label>First Name</label>
         <input name="firstname" className="firstname" onChange={handleChange} type="text" placeholder="First Name" required />

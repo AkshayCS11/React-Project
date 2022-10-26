@@ -1,6 +1,7 @@
 import * as api from '../api/index.js';
 import { ADDCUSTOMER } from '../constants/actionTypes';
 
+
 export const addcustomer = (formData, router) => async (dispatch) => {
 
     console.log('formdata',formData)
@@ -8,8 +9,10 @@ export const addcustomer = (formData, router) => async (dispatch) => {
       const { data } = await api.addCustomer(formData);
   
       dispatch({ type: ADDCUSTOMER, data });
-  
-      router.push('/customerform');
+
+      setTimeout(router.push('/customerform'), 5000)
+      
+      // window.location.reload();
     
     } catch (error) {
       console.log(error);

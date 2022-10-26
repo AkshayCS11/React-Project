@@ -1,10 +1,8 @@
 import React,{useState} from 'react'
 import UploadFile from '../Excelupload/UploadFile';
 import DisplayData from '../Excelupload/Displaydata';
-import Employeeform from './AddEmployee.js';
 
-
-function Formandexcel() {
+function Employeeupload() {
     
 const [uploadedExcelData, setUploadedExcelData] = useState([]);
 const uploadedExcelDataHandler = (data) => {
@@ -12,11 +10,11 @@ const uploadedExcelDataHandler = (data) => {
  
 return (
     <div>
-      <Employeeform/>
+      <h1>Upload Employee Data</h1>
       <UploadFile onUploadExcelFile={uploadedExcelDataHandler} />
       <DisplayData excelData={uploadedExcelData}/>
     </div>
   )
 }
 
-export default Formandexcel
+export default Employeeupload;

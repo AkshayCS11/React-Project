@@ -30,7 +30,7 @@ const reader = new FileReader();
 
   return (
     <div className="uploadFile">
-      <label>Upload your Excel file:</label>
+      <label>Upload using Excel template</label>
       <div>
         <label onDrop={dropHandler} onDragOver={dragOverHandler} htmlFor="file">
           <div>
