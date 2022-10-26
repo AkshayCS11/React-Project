@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { TextField, Button, Typography, Paper, Checkbox, FormGroup,FormControlLabel } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
+// import { FormGroup,FormControlLabel } from '@mui/material';
 
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
@@ -42,7 +43,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper} elevation={6}>
         <Typography variant="h6" align="center">
-          Please Sign In to create your own Ideas
+          Please Sign In to Create Project, Add Employee and Add Customers
         </Typography>
       </Paper>
     );
@@ -59,10 +60,11 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${post?.title}"` : 'Innovate an Idea'}</Typography>
-        <TextField name="title" variant="outlined" label="Idea Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
+        <Typography variant="h6">{currentId ? `Editing "${post?.title}"` : 'Add Task'}</Typography>
+        {/* <TextField name="project" variant="outlined" label="Project Name" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, project: e.target.value })} /> */}
+        <TextField name="title" variant="outlined" label="Task Name" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
         <TextField name="message" variant="outlined" label="Description" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
-        <div style={{ padding: '5px 0', width: '94%' }}>
+        {/* <div style={{ padding: '5px 0', width: '94%' }}>
           <ChipInput
             name="tags"
             variant="outlined"
@@ -72,9 +74,18 @@ const Form = ({ currentId, setCurrentId }) => {
             onAdd={(chip) => handleAddChip(chip)}
             onDelete={(chip) => handleDeleteChip(chip)}
           />
+        </div> */}
+        <div style={{padding: '5px 0',width: '94%' }}>
+
+        <FormGroup>
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Billable" />
+        </FormGroup>
         </div>
+
+
+
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Save</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>

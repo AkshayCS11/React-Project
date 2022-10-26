@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import postRoutes from './routes/posts.js';
 import userRouter from "./routes/user.js";
+import empRouter from "./routes/empdata.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 app.use("/user", userRouter);
+app.use("/add", empRouter);
 
 const CONNECTION_URL = 'mongodb://localhost:27017/Container';
 const PORT = process.env.PORT|| 5000;

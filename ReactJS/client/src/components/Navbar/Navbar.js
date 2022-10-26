@@ -40,7 +40,13 @@ const Navbar = () => {
       <Link to="/" className={classes.brandContainer}>
         <img component={Link} to="/" src={UpsmartLogo} alt="icon" height="45px" />
       </Link>
-      <Typography className={classes.header} variant="h4">Innovate Your Ideas</Typography>
+      <Toolbar>
+      {user?(
+        <div>
+        <Button style={{marginLeft: '30rem', display: "row"}} component={Link} to="/employeeform" variant="contained" color="primary">Add Employee</Button>
+        <Button style={{marginLeft: '10px', display: "row"}} component={Link} to="/customerform" variant="contained" color="primary">Add Customer</Button>
+        </div>):('')}
+      </Toolbar>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>

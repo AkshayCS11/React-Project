@@ -36,3 +36,26 @@ export const activate = (formData, router) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const forgotpassword = (formData, router) => async (dispatch) => {
+  try {
+    const { data } = await api.forgotPassword(formData);
+
+    dispatch({ type: AUTH, data });
+
+    router.push('/resetpassword');
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const resetpassword = (formData, router) => async (dispatch) => {
+  try {
+    const { data } = await api.resetPassword(formData);
+
+    dispatch({ type: AUTH, data });
+
+    router.push('/auth');
+  } catch (error) {
+    console.log(error);
+  }
+};
