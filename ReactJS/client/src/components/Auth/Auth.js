@@ -4,12 +4,13 @@ import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
 import Icon from './icon';
 import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -33,6 +34,17 @@ const SignUp = () => {
     history.push('/forgotpassword')
   };
 
+  const notify = () => toast.info("Form submission successfull",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -40,6 +52,7 @@ const SignUp = () => {
       dispatch(signup(form, history));
     } else {
       dispatch(signin(form, history));
+      notify();
     }
   };
 
@@ -62,6 +75,7 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <ToastContainer />
       <Paper className={classes.paper} elevation={6}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

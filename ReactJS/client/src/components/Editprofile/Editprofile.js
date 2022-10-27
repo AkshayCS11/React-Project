@@ -1,9 +1,9 @@
 import React from 'react';
 import "./Editprofile.css";
 
-function close() {
-  document.getElementById('container').hidden = true;
-}
+// function close() {
+//   document.getElementById('container').hidden = true;
+// }
 
 function Editprofile() {
   return (
@@ -17,9 +17,9 @@ function Editprofile() {
         <label>Email</label>
         <input className="email" type="email" placeholder="Enter your email" />
         <br />
-        <label>Phone Number</label>
+        {/* <label>Phone Number</label>
         <input id="phone" type="number" placeholder="Enter your number" />
-        <br />
+        <br /> */}
         <input className="reset" type="reset" value="Reset"/>
         <input className="submit" type="submit" value="Submit"/>
       </form>

@@ -29,7 +29,8 @@ const Customerform = () => {
     theme: "colored",
     });
   
-  const handleSubmit = (e) => {
+ 
+    const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addcustomer(form,history));
     notify();      
