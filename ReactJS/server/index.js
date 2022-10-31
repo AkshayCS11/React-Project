@@ -18,7 +18,7 @@ app.use('/posts', postRoutes);
 app.use("/user", userRouter);
 app.use("/add", empRouter);
 
-const CONNECTION_URL = 'mongodb://localhost:27017/Container';
+const CONNECTION_URL = 'mongodb+srv://adminakshay:G7TIQXH3tTNx4bMW@cluster0.sdvxgsh.mongodb.net/appdata?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

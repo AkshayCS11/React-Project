@@ -3,10 +3,14 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addemployee } from '../../actions/addemployee';
 import { ADDEMPLOYEE } from '../../constants/actionTypes';
+import { Button, Box } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./AddEmployee.css";
 
 
-const initialState = { firstName: '', lastName: '', gender: '', dob: '', email: '', number: '', address: '', city: '', state: '', postcode:'', country: ''};
+const initialState = { firstname: '', lastname: '', gender: '', dob: '', email: '', number: '', address: '', city: '', state: '', postcode:'', country: ''};
 
 const Employeeform = () =>  {
 
@@ -14,17 +18,37 @@ const [form, setForm] = useState(initialState);
 const dispatch = useDispatch();
 const history = useHistory();
 
+const notify = () => toast.info("Form submission successfull",{
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "colored",
+  });
+
 const handleSubmit = (e) => {
   e.preventDefault();
-  dispatch(addemployee(form, history));
+  dispatch(addemployee(form,history));
+  notify();
 };
 
 const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
     <div id="container">
+     <ToastContainer />
      <form onSubmit={handleSubmit}>
-        <h2 className="heading">Add Employee</h2>
+       <Box component="span"
+             m={1}
+             display="flex"
+             justifyContent="space-between"
+             alignItems="center">
+        <h2 className="heading">Add Employee</h2>        
+        <Button component={Link} to="/employeeupload" variant="contained" color="primary">Upload bulk data</Button>
+        </Box>
         <hr />
         <label>First Name</label>
         <input name="firstname" className="firstname" onChange={handleChange} type="text" placeholder="First Name" required />
@@ -62,9 +86,10 @@ const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value }
         <input name="country" className="country" onChange={handleChange} type="text" placeholder="Country" required/>
         <br />
         <input className="reset" type="reset" value="Reset"/>
-        <button className="submit" type="submit"> Submit </button>
+        <input className="submit" type="submit" value="Submit"/>
       </form>
     </div>
+      
   )
 }
 

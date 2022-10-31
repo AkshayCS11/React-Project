@@ -12,6 +12,8 @@ import ForgotPassword from './components/Auth/ForgotPassword';
 import ResetPassword from './components/Auth/ResetPassword';
 import Employeeform from './components/Employeeform/AddEmployee';
 import Customerform from './components/Customerform/Addcustomer';
+import Employeeupload from './components/Employeeform/EmployeeUpload';
+import Customerupload from './components/Customerform/CustomerUpload';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -32,6 +34,8 @@ const App = () => {
           <Route path="/resetpassword" exact component={() => <ResetPassword/>} />
           <Route path="/employeeform" exact component={Employeeform}/>
           <Route path="/customerform" exact component={Customerform}/>
+          <Route path="/employeeupload" exact component={Employeeupload}/>
+          <Route path="/customerupload" exact component={Customerupload}/>
         </Switch>
       </Container>
     </BrowserRouter>

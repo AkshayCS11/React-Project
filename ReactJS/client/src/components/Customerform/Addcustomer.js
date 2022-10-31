@@ -3,9 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ADDCUSTOMER } from '../../constants/actionTypes';
 import { addcustomer } from '../../actions/addcustomer';
+import { Button, Box } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Addcustomer.css";
 
-const initialState = { firstName: '', lastName: '', company:'', email: '', phonenumber: '', website: ''};
+const initialState = { firstname: '', lastname: '', company:'', email: '', phonenumber: '', website: ''};
 
 
 const Customerform = () => {
@@ -13,18 +17,38 @@ const Customerform = () => {
   const [form, setForm] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const notify = () => toast.info("Form submission successfull",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
   
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addcustomer(form,history));
+    notify();      
   };
   
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
    <div id="container">
+     <ToastContainer />
      <form onSubmit={handleSubmit}>
-        <h2 className="heading">Add Customer</h2>
+        <Box component="span"
+             m={1}
+             display="flex"
+             justifyContent="space-between"
+             alignItems="center">
+        <h2 className="heading">Add Customer</h2>        
+        <Button component={Link} to="/customerupload" variant="contained" color="primary">Upload bulk data</Button>
+        </Box>
         <hr />
         <label>Customer Type</label>
         <input name="customertype" onChange={handleChange} className="business" type="radio" value="Business" required /> Business
