@@ -27,3 +27,5 @@ export const forgotPassword = (formData) => API.post('/user/forgotpassword', for
 export const resetPassword = (formData) => API.post('/user/resetpassword', formData);
 export const addEmployee = (formData) => API.post('/add/employee', formData);
 export const addCustomer = (formData) => API.post('/add/customer', formData);
+export const editProfile = (formData) => API.post('/add/customer', formData);
+

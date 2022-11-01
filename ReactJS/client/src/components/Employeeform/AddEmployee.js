@@ -2,7 +2,6 @@ import React,{ useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addemployee } from '../../actions/addemployee';
-import { ADDEMPLOYEE } from '../../constants/actionTypes';
 import { Button, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';

@@ -26,7 +26,7 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password, firstName, lastName, confirmPassword } = req.body;
+  const { email, password, phone, firstName, lastName, confirmPassword } = req.body;
 
   try {
     const oldUser = await UserModal.findOne({ email });
@@ -46,7 +46,7 @@ export const signup = async (req, res) => {
     // if (sendCode.error) return res.status(500).json({ error: true, message: "Couldn't send verification email.", });
     
 
-    const result = await UserModal.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, emailToken:code, emailTokenExpires: new Date(expiry) });
+    const result = await UserModal.create({ email, phone, password: hashedPassword, name: `${firstName} ${lastName}`, emailToken:code, emailTokenExpires: new Date(expiry) });
 
     // const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 

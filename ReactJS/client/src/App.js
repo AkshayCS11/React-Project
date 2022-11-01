@@ -14,6 +14,8 @@ import Employeeform from './components/Employeeform/AddEmployee';
 import Customerform from './components/Customerform/Addcustomer';
 import Employeeupload from './components/Employeeform/EmployeeUpload';
 import Customerupload from './components/Customerform/CustomerUpload';
+import Editprofile from './components/Editprofile/Editprofile';
+
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -36,6 +38,7 @@ const App = () => {
           <Route path="/customerform" exact component={Customerform}/>
           <Route path="/employeeupload" exact component={Employeeupload}/>
           <Route path="/customerupload" exact component={Customerupload}/>
+          <Route path="/editprofile" exact component={Editprofile}/>
         </Switch>
       </Container>
     </BrowserRouter>
