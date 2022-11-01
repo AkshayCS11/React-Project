@@ -15,14 +15,14 @@ function Editprofile() {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-  const initialState = { name: '', email: '', phone: ''};
+  const initialState = { firstname: '', lastname:'', phone: ''};
   const [form, setForm] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editprofile(form,history));
+    dispatch(editprofile(form, user.result._id, history));
     notify();
   };
 
@@ -50,12 +50,15 @@ function Editprofile() {
       <form onSubmit={handleSubmit}>
         <h2 className="heading">Edit Profile</h2>
         <hr />
-        <label>Name</label>
-        <input onChange={handleChange} name="name" className="profilefirstname" type="text" placeholder="Enter your Name" required />
+        <label>First Name</label>
+        <input onChange={handleChange} name="firstname" className="profilefirstname" type="text" placeholder="Enter Your First Name" required />
         <br/>
-        <label>Email</label>
+        <label>Last Name</label>
+        <input onChange={handleChange} name="lastname" className="profilefirstname" type="text" placeholder="Enter Your Last Name" required />
+        <br/>
+        {/* <label>Email</label>
         <input onChange={handleChange} name="email" className="email" type="email" placeholder="Enter your email" required />
-        <br />
+        <br /> */}
         <label>Phone Number</label>
         <input onChange={handleChange} name="phone" id="phone" type="number" placeholder="Enter your number" required />
         <br />

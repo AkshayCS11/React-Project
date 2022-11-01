@@ -59,6 +59,33 @@ export const signup = async (req, res) => {
   }
 };
 
+export const editProfile = async (req,res) => {
+
+  const { firstname, lastname, phone } = req.body;
+
+  console.log('editprofile',req.body)
+  
+  try{
+      const { id } = req.params;
+      
+      console.log('id', id )
+
+      const userData = await UserModal.findByIdAndUpdate({_id: id},{$set:{name: `${firstname} ${lastname}`, phone: phone}})
+      
+      if(userData){
+
+      }
+      else{
+        res.redirect('/editprofile')
+      }
+    }
+  catch(error){
+      res.status(500).json({ message: "Something went wrong" });
+
+      console.log(error);
+  }
+}
+
 export const activate = async (req, res) => {
   const { email, emailToken } = req.body;
 
