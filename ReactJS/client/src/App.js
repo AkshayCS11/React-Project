@@ -15,6 +15,7 @@ import Customerform from './components/Customerform/Addcustomer';
 import Employeeupload from './components/Employeeform/EmployeeUpload';
 import Customerupload from './components/Customerform/CustomerUpload';
 import Editprofile from './components/Editprofile/Editprofile';
+import Editprofileform from './components/Editprofile/Editprofileform';
 
 
 const App = () => {
@@ -38,7 +39,8 @@ const App = () => {
           <Route path="/customerform" exact component={Customerform}/>
           <Route path="/employeeupload" exact component={Employeeupload}/>
           <Route path="/customerupload" exact component={Customerupload}/>
-          <Route path="/editprofile" exact component={Editprofile}/>
+          <Route path="/profile" exact component={Editprofile}/>
+          <Route path="/editprofileform" exact component={Editprofileform}/>
         </Switch>
       </Container>
     </BrowserRouter>
