@@ -45,7 +45,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography variant="h6" align="center">
           Please Sign In to Create Project, Add Employee and Add Customers
         </Typography>
-      </Paper>
+        </Paper> 
     );
   }
 

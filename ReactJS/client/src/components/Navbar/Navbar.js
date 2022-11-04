@@ -3,7 +3,6 @@ import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-
 import UpsmartLogo from '../../images/UpsmartLogo.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';

@@ -1,0 +1,43 @@
+#grid{
+    padding: 1em;
+    font-size: 15px;
+    color: #141312;
+    margin: 0rem 0px 0px 2rem;
+}
+
+#heading{
+    color:rgb(223, 118, 12)
+}
+
+#homepageimage{
+
+    width: 50%;
+    height: 36rem;
+    border-radius: 15px;
+}
+
+#allcontent{
+    display:flex;
+}
+#content{
+    flex:auto;
+    margin: 12rem 0px 0px 5rem;
+}
+
+.content1{
+    font-weight: 500;
+    font-size: x-large;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.content2{
+    font-weight: 500;
+    font-size: x-large;
+    font-family: "Lucida Console", "Courier New", monospace;
+    margin-left: 10px;
+}
+.content3{
+    font-weight: 500;
+    font-size: x-large;
+    font-family: "Lucida Console", "Courier New", monospace;
+}

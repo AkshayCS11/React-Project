@@ -18,7 +18,7 @@ const Home = () => {
   const query = useQuery();
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -67,9 +67,10 @@ const Home = () => {
             {/* </AppBar> */}
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             {(!searchQuery && !tags.length) && (
+              user?(
               <Paper className={classes.pagination} elevation={6}>
                 <Pagination page={page} />
-              </Paper>
+              </Paper>):('')
             )}
           </Grid>
         </Grid>
