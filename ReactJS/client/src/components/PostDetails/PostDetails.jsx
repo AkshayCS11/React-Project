@@ -3,7 +3,6 @@ import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core/
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory, Link } from 'react-router-dom';
-
 import { getPost, getPostsBySearch } from '../../actions/posts';
 import CommentSection from './CommentSection';
 import useStyles from './styles';
@@ -58,6 +57,19 @@ const Post = () => {
             </Link>
           </Typography>
           <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
+          <Typography variant="h6">Customer Name : </Typography>
+          <select>
+            <option>
+              Select Customer
+            </option>
+          </select>
+          <br /><br />
+          <Typography variant="h6">Employees : </Typography>
+          <select>
+            <option>
+              Select Employee
+            </option>
+          </select>
           <Divider style={{ margin: '20px 0' }} />
           <CommentSection post={post} />
           <Divider style={{ margin: '20px 0' }} />

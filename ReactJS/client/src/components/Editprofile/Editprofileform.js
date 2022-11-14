@@ -41,7 +41,7 @@ function Editprofileform() {
         <h2 className="heading">Edit Profile</h2>
         <hr />
         <label>First Name</label>
-        <input onChange={handleChange} name="firstname" className="profilefirstname" type="text" placeholder="Enter Your First Name" required />
+        <input onChange={handleChange} name="firstname" className="profilefirstname" type="text" placeholder="Enter Your First Name" required/>
         <br/>
         <label>Last Name</label>
         <input onChange={handleChange} name="lastname" className="profilefirstname" type="text" placeholder="Enter Your Last Name" required />
