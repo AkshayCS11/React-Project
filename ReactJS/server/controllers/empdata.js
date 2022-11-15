@@ -18,6 +18,17 @@ export const addEmployee = async (req,res) => {
     }
 }
 
+export const getEmpdata = async (req, res) => {
+
+    await EmpModal.find().then((result)=>{
+    
+    res.send(result);
+
+    }).catch((err)=>{
+        console.log(err);
+    })
+};
+
 export const addCustomer = async (req,res) => {
     console.log("hello")
     console.log(req.body)

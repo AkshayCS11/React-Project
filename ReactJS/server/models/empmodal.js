@@ -19,6 +19,6 @@ const empSchema = mongoose.Schema({
   
   });
 
+ var EmpModal = mongoose.model("Employee", empSchema);
 
-
-export default mongoose.model("Employee", empSchema);
+export default EmpModal;
