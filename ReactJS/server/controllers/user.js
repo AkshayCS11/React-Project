@@ -1,6 +1,8 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {sendmail} from "./helpers/sendEmail.js"
+import {sendmailPassword} from "./helpers/resetPasswordemail.js"
+
 import UserModal from "../models/user.js";
 
 const secret = 'test';
@@ -41,6 +43,8 @@ export const signup = async (req, res) => {
 
     let expiry = Date.now() + 60 * 1000 * 15; //15 mins in ms
 
+    console.log("signup", code, email)
+
     const sendCode = sendmail(email, code);
 
     // if (sendCode.error) return res.status(500).json({ error: true, message: "Couldn't send verification email.", });
@@ -61,7 +65,7 @@ export const signup = async (req, res) => {
 
 export const editProfile = async (req,res) => {
 
-  const { firstname, lastname, phone } = req.body;
+  const {  phone } = req.body;
 
   console.log('editprofile',req.body)
   
@@ -70,14 +74,14 @@ export const editProfile = async (req,res) => {
       
       console.log('id', id )
 
-      const userData = await UserModal.findByIdAndUpdate({_id: id},{$set:{name: `${firstname} ${lastname}`, phone: phone}})
+      const userData = await UserModal.findByIdAndUpdate({_id: id},{$set:{ phone: phone}})
       
       if(userData){
+      res.status(201).json({userData});
+      console.log(userData)
 
       }
-      else{
-        res.redirect('/editprofile')
-      }
+      
     }
   catch(error){
       res.status(500).json({ message: "Something went wrong" });
@@ -90,7 +94,7 @@ export const activate = async (req, res) => {
   const { email, emailToken } = req.body;
 
   try {
-    console.log("hello",req.body)
+    console.log("activate",req.body)
 
     if (!email || !emailToken) return res.status(400).json({ message: "Please make a valid request" }); 
       
@@ -145,7 +149,7 @@ export const forgotPassword = async (req, res) => {
     console.log("User found")
 
     let code = Math.floor(100000 + Math.random() * 900000);
-    // let response = await sendEmail(user.email, code);
+    let response = await sendmailPassword(user.email, code);
 
     // if (response.error) {
     //   return res.status(500).json({
@@ -165,6 +169,8 @@ export const forgotPassword = async (req, res) => {
       message:
         "If that email address is in our database, we will send you an email to reset your password",
     });
+    // return res.status(201).json({ data:user });
+
   } 
   
   catch (error) {
@@ -212,10 +218,12 @@ export const resetPassword = async (req, res) => {
 
     await user.save();
 
-    return res.send({
-      success: true,
-      message: "Password has been changed",
-    });
+    // return res.send({
+    //   success: true,
+    //   message: "Password has been changed",
+    // });
+    return res.status(201).json({ user: user});
+
   } 
   
   catch (error) {
