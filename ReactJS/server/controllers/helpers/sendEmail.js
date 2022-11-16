@@ -20,7 +20,7 @@ export const  sendmail = (email, code) =>{
     subject: 'Verification Code',
     text: `Your activation code is`,
     // text: code,
-    html: `<a href="http://localhost:3000/activate">Activation link</a> <p>Verification code : ${code}</p>`  
+    html: `<a href="https://upsmartreactproject.netlify.app/activate">Activation link</a> <p>Verification code : ${code}</p>`  
   };
 
   transporter.sendMail(mailOptions, function(error, info){
@@ -28,6 +28,6 @@ export const  sendmail = (email, code) =>{
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
-    }
+   }
   });
 }

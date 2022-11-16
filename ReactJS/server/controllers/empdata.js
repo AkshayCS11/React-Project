@@ -20,7 +20,9 @@ export const addEmployee = async (req,res) => {
 
 export const getEmpdata = async (req, res) => {
 
-    await EmpModal.find().then((result)=>{
+    const { id } = req.params;
+
+    await EmpModal.findById({_id: id}).then((result)=>{
     
     res.send(result);
 

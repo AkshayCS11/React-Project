@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { getPost, getPostsBySearch } from '../../actions/posts';
+import { getempdata } from '../../actions/addemployee';
 import CommentSection from './CommentSection';
 import useStyles from './styles';
 
@@ -13,6 +14,10 @@ const Post = () => {
   const history = useHistory();
   const classes = useStyles();
   const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getempdata(id));
+  }, []);
 
   useEffect(() => {
     dispatch(getPost(id));

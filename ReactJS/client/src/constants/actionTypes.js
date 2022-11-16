@@ -14,3 +14,4 @@ export const LOGOUT = 'LOGOUT';
 export const ADDEMPLOYEE = 'ADDEMPLOYEE';
 export const ADDCUSTOMER = 'ADDCUSTOMER';
 export const EDITPROFILE = 'EDITPROFILE';
+export const GETEMPDATA = 'GETEMPDATA';

@@ -40,7 +40,7 @@ const Navbar = () => {
         <img component={Link} to="/" src={UpsmartLogo} alt="icon" height="45px" />
       </Link>
       <Toolbar>
-      {user?(
+      {user?.result?(
         <div>
         <Button style={{marginLeft: '30rem', display: "row"}} component={Link} to="/employeeform" variant="contained" color="primary">Add Employee</Button>
         <Button style={{marginLeft: '10px', display: "row"}} component={Link} to="/customerform" variant="contained" color="primary">Add Customer</Button>
