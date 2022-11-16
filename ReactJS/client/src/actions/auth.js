@@ -5,10 +5,15 @@ export const signin = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.signIn(formData);
 
+    
     dispatch({ type: AUTH, data });
-
+    
+    
     router.push('/');
+    alert("Successfully signed in")
   } catch (error) {
+    alert("Sign in failed: Invalid credentials" )
+
     console.log(error);
   }
 };
@@ -20,7 +25,11 @@ export const signup = (formData, router) => async (dispatch) => {
     // dispatch({ type: AUTH, data }); // data pass to the reducers
 
     router.push('/activate');
+    alert("Verification of your account is required. A verification code is send to the email address")
+
   } catch (error) {
+    alert("Already a User. Please use different email address")
+
     console.log(error);
   }
 };
@@ -32,7 +41,11 @@ export const activate = (formData, router) => async (dispatch) => {
     dispatch({ type: AUTH, data });
 
     router.push('/');
+    alert("Successfully verified and signing in")
+
   } catch (error) {
+    alert("Code verification failed")
+
     console.log(error);
   }
 };
