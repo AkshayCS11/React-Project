@@ -20,7 +20,7 @@ export const  sendmailPassword = (email, code) =>{
     subject: 'Verification Code for reset password',
     text: `Your activation code is`,
     // text: code,
-    html: `<a href="https://upsmartreactproject.netlify.app/resetpassword">Reset password link</a> <p>Verification code : ${code}</p>`  
+    html: `<a href="http://localhost:3000/resetpassword">Reset password link</a> <p>Verification code : ${code}</p>`  
   };
 
   transporter.sendMail(mailOptions, function(error, info){
