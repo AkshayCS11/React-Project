@@ -33,9 +33,9 @@ const handleShowPassword = () => setShowPassword(!showPassword);
 //     setIsSignup((prevIsSignup) => !prevIsSignup);
 //     // setShowPassword(false);
 //     if(isSignup){
-//         history.push('/auth');
+//         history.push('/signup');
 //     }
-//     else history.push('/auth');
+//     else history.push('/signup');
 // };
 
 const handleSubmit = (e) => {

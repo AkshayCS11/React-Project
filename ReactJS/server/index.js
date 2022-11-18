@@ -20,7 +20,7 @@ app.use("/user", userRouter);
 app.use("/add", empRouter);
 app.use("/role", roleRouter);
 
-const CONNECTION_URL = 'mongodb://localhost:27017/Container1';
+const CONNECTION_URL = 'mongodb://localhost:27017/DMS';
 const PORT = process.env.PORT|| 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

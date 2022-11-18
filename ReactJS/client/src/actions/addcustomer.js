@@ -7,7 +7,7 @@ export const addcustomer = (formData, router) => async (dispatch) => {
   
       dispatch({ type: ADDCUSTOMER, data });
   
-      router.push('/auth');
+      router.push('/customerform');
     
     } catch (error) {
       console.log(error);

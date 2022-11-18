@@ -8,7 +8,7 @@ export const addemployee = (formData, router) => async (dispatch) => {
       dispatch({ type: ADDEMPLOYEE, data });
       
       // console.log("this is",data)
-      router.push('/auth');
+      router.push('/employeeform');
     
     } catch (error) {
       console.log(error);

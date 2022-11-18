@@ -26,7 +26,7 @@ const SignIn = () => {
   const switchMode = () => {
     setForm(initialState);
     // setIsSignup((prevIsSignup) => !prevIsSignup);
-    history.push('/auth')
+    history.push('/signup')
 
     setShowPassword(false);
   };
