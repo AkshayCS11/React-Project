@@ -9,15 +9,18 @@ const secret = 'test';
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
+  console.log("inside sign in function",email," and ",password)
 
   try {
     const oldUser = await UserModal.findOne({ email });
 
+    // oldUser.password = "123456"
+    // console.log(oldUser.password)
     if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
 
-    const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
+    // const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
 
-    if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
+    // if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
 
@@ -51,11 +54,11 @@ export const signup = async (req, res) => {
     
 
     // const result = await UserModal.create({ email, phone, password: hashedPassword, name: `${firstName} ${lastName}`, emailToken:code, emailTokenExpires: new Date(expiry) });
-    const result = await UserModal.create({ email, phone, name: `${firstName} ${lastName}` });
+    // const result = await UserModal.create({ email, phone, name: `${firstName} ${lastName}` });
 
     // const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 
-    res.status(201).json({ result});
+    res.status(201).json({ oldUser});
 
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

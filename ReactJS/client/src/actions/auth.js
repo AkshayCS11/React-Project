@@ -69,12 +69,12 @@ export const resetpassword = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.resetPassword(formData);
 
-    alert("Successfully reset your password. Now you can sign in")
+    alert("Successfully changed your password. Now you can sign in")
     dispatch({ type: AUTH, data });
     
   } catch (error) {
     // alert("Wrong credentials")
-    router.push('/auth');
+    router.push('/signin');
 
     console.log(error);
   }
