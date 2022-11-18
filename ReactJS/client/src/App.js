@@ -16,6 +16,7 @@ import Employeeupload from './components/Employeeform/EmployeeUpload';
 import Customerupload from './components/Customerform/CustomerUpload';
 import Editprofile from './components/Editprofile/Editprofile';
 import Editprofileform from './components/Editprofile/Editprofileform';
+import SignIn from './components/Auth/signin'
 
 
 const App = () => {
@@ -31,7 +32,9 @@ const App = () => {
           <Route path="/posts/search" exact component={Home} />
           <Route path="/posts/:id" exact component={PostDetails} />
           <Route path={['/creators/:name', '/tags/:name']} component={CreatorOrTag} />
+
           <Route path="/auth" exact component={() => <Auth/>} />
+          <Route path="/signin" exact component={() => <SignIn/>} />
           <Route path="/activate" exact component={() => <Activate/>} />
           <Route path="/forgotpassword" exact component={() => <ForgotPassword/>} />
           <Route path="/resetpassword" exact component={() => <ResetPassword/>} />

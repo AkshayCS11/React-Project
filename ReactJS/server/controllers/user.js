@@ -28,16 +28,16 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password, phone, firstName, lastName, confirmPassword } = req.body;
+  const { email, phone, firstName, lastName } = req.body;
 
   try {
     const oldUser = await UserModal.findOne({ email });
 
     if (oldUser) return res.status(400).json({ message: "User already exists" });
 
-    if(password!==confirmPassword) return res.status(400).json({ message: "Passwords don't match" });
+    // if(password!==confirmPassword) return res.status(400).json({ message: "Passwords don't match" });
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    // const hashedPassword = await bcrypt.hash(password, 12);
 
     let code = Math.floor(100000 + Math.random() * 900000);
 
@@ -45,12 +45,13 @@ export const signup = async (req, res) => {
 
     console.log("signup", code, email)
 
-    const sendCode = sendmail(email, code);
+    const sendCode = sendmail(firstName,lastName, email, phone);
 
     // if (sendCode.error) return res.status(500).json({ error: true, message: "Couldn't send verification email.", });
     
 
-    const result = await UserModal.create({ email, phone, password: hashedPassword, name: `${firstName} ${lastName}`, emailToken:code, emailTokenExpires: new Date(expiry) });
+    // const result = await UserModal.create({ email, phone, password: hashedPassword, name: `${firstName} ${lastName}`, emailToken:code, emailTokenExpires: new Date(expiry) });
+    const result = await UserModal.create({ email, phone, name: `${firstName} ${lastName}` });
 
     // const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 

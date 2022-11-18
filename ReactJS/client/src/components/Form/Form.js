@@ -43,7 +43,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper} elevation={6}>
         <Typography variant="h6" align="center">
-          Please Sign In to Create Project, Add Employee and Add Customers
+          Please Sign In to Add Employee and Customers Data
         </Typography>
         </Paper> 
     );

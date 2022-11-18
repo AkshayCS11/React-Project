@@ -24,11 +24,11 @@ export const signup = (formData, router) => async (dispatch) => {
 
     // dispatch({ type: AUTH, data }); // data pass to the reducers
 
-    router.push('/activate');
-    alert("Verification of your account is required. A verification code is send to the email address")
+    router.push('/signin');
+    alert("You will get an email when Admin approves your request ");
 
   } catch (error) {
-    alert("Already a User. Please use different email address")
+    alert("Wrong credentials")
 
     console.log(error);
   }

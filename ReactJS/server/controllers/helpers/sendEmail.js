@@ -12,15 +12,22 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export const  sendmail = (email, code) =>{
+export const  sendmail = (firstName,lastName, email, phone) =>{
   // console.log(email,code);
   const mailOptions = {
     from: 'sreehari.cr@upsmartsolutions.com',
-    to: email,
-    subject: 'Verification Code',
-    text: `Your activation code is`,
+    to: 'sreeharicr786@gmail.com',
+    subject: 'New User is waiting for Role Approval',
+    text: `Click on the link below to do the approval"`,
     // text: code,
-    html: `<a href="http://localhost:3000/activate">Activation link</a> <p>Verification code : ${code}</p>`  
+    html: 
+    `
+    <a href="http://localhost:3000/admin">Approve?</a> 
+    <p>User Name : ${firstName}</p>
+    <p>User Email : ${email}</p>
+    <p>User Phone : ${phone}</p>
+    
+    `  
   };
 
   transporter.sendMail(mailOptions, function(error, info){
@@ -31,3 +38,31 @@ export const  sendmail = (email, code) =>{
     }
   });
 }
+
+
+// import sendgrid from '@sendgrid/mail';
+
+//     const SENDGRID_API_KEY = "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"
+
+//     sendgrid.setApiKey(SENDGRID_API_KEY)
+
+//     export const  sendmail = (email, code) =>{
+
+//       const msg = {
+//         to: email,
+//       // Change to your recipient
+//         from: 'sreeharicr786@gmail.com',
+//       // Change to your verified sender
+//         subject: 'Activate your account',
+//         text: "code",
+//         html: '<strong>`Activation code` </strong>',
+//       }
+//       sendgrid
+//         .send(msg)
+//         .then((resp) => {
+//           console.log('Email sent\n', resp)
+//         })
+//         .catch((error) => {
+//           console.error(error)
+//       })
+//     }

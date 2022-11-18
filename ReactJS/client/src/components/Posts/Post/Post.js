@@ -51,6 +51,10 @@ const Post = ({ post, setCurrentId }) => {
   };
 
   return (
+    
+    // (user?.result?.isAdmin)&&(
+    //  <h1>Hello</h1>
+      
     <Card className={classes.card} raised elevation={6}>
       <ButtonBase
         component="span"
@@ -63,12 +67,14 @@ const Post = ({ post, setCurrentId }) => {
           <Typography variant="h6">{post.name}</Typography>
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         </div>
+        
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
         <div className={classes.overlay2} name="edit">
           <Button
             onClick={(e) => {
               e.stopPropagation();
-              setCurrentId(post._id);
+              // setCurrentId(post._id);
+              setCurrentId = post._id;
             }}
             style={{ color: 'white' }}
             size="small"
@@ -96,7 +102,9 @@ const Post = ({ post, setCurrentId }) => {
         )}
       </CardActions>
     </Card>
+    // )
   );
+  
 };
 
 export default Post;

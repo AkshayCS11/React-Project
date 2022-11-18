@@ -8,6 +8,7 @@ import useStyles from './styles';
 
 const Posts = ({ setCurrentId }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  // const user = JSON.parse(localStorage.getItem('profile'));
   const { posts, isLoading } = useSelector((state) => state.posts);
   const classes = useStyles();
 
@@ -15,6 +16,7 @@ const Posts = ({ setCurrentId }) => {
 
   return (
     user? (
+    // (user?.result?.isAdmin === true) &&(
     isLoading ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts?.map((post) => (
@@ -36,6 +38,7 @@ const Posts = ({ setCurrentId }) => {
       </div>
       </div>
       </div>
+    // )
     )
   );
 };

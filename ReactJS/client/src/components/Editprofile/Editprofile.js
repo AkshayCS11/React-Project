@@ -3,11 +3,14 @@ import "./Editprofile.css";
 import {Button, Typography, Box} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useStyles from '../Navbar/styles';
+import { useEffect } from 'react';
 
 function Editprofile() {
 
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  
+  
   
   return (
     <div id="container">

@@ -5,11 +5,12 @@ import * as actionType from '../constants/actionTypes';
 export const editprofile = (formData,id,router) => async (dispatch) => {
     try {
 
-      const { data } = await api.editProfile(formData,id);
+      const  data  = await api.editProfile(formData,id);
+      console.log("hey",data)
 
       dispatch({ type: EDITPROFILE, data });
       
-      router.push('/auth');
+      router.push('/profile');
   
     } catch (error) {
       console.log(error);

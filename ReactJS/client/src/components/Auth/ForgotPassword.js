@@ -22,11 +22,13 @@ const dispatch = useDispatch();
 const history = useHistory();
 const classes = useStyles(); 
 
-// const switchMode = () => {
-//     setForm(initialState);
-//     setIsSignup((prevIsSignup) => !prevIsSignup);
-//     // setShowPassword(false);
-// };
+const switchMode = () => {
+    setForm(initialState);
+    setIsSignup((prevIsSignup) => !prevIsSignup);
+    history.push('/signin')
+
+    // setShowPassword(false);
+};
 
 const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -65,7 +67,6 @@ const handleSubmit = (e) => {
                         {  (
                         <>
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-                        {/* <Input name="emailToken" label="Email verification Code" handleChange={handleChange} type='text' /> */}
                         </>
                         )}
                     </Grid>
@@ -83,13 +84,13 @@ const handleSubmit = (e) => {
                         onFailure={googleError}
                         cookiePolicy="single_host_origin"
                     /> */}
-                    {/* <Grid container justify="flex-end">
+                    <Grid container justify="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>
-                                { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
+                                Already have an account? Sign in
                             </Button>
                         </Grid>
-                    </Grid> */}
+                    </Grid>
                 </form>
             </Paper>
         </Container>

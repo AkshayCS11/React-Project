@@ -10,6 +10,7 @@ function Editprofileform() {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const initialState = { firstname: '', lastname:'', phone: ''};
+    const User = JSON.parse(localStorage.getItem('profile'))
     const [form, setForm] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -40,17 +41,18 @@ function Editprofileform() {
       <form onSubmit={handleSubmit}>
         <h2 className="heading">Edit Profile</h2>
         <hr />
-        <label>First Name</label>
-        <input onChange={handleChange} name="firstname" className="profilefirstname" type="text" placeholder="Enter Your First Name" required/>
+        <label>User Name</label>
+        <input onChange={handleChange} name="firstname" className="profilefirstname" type="text" value={User.result.name} required/>
         <br/>
-        <label>Last Name</label>
+        {/* <label>Last Name</label>
         <input onChange={handleChange} name="lastname" className="profilefirstname" type="text" placeholder="Enter Your Last Name" required />
-        <br/>
-        {/* <label>Email</label>
-        <input onChange={handleChange} name="email" className="email" type="email" placeholder="Enter your email" required />
-        <br /> */}
+        <br/> */}
+        <label>Email</label>
+        <input onChange={handleChange} name="email" className="email" type="email" value={User.result.email} required />
+        <br />
         <label>Phone Number</label>
         <input onChange={handleChange} name="phone" id="phone" type="number" placeholder="Enter your number" required />
+      
         <br />
         <input className="reset" type="reset" value="Reset"/>
         <input className="submit" type="submit" value="Submit"/>
